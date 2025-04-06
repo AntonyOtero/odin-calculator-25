@@ -42,12 +42,20 @@ const operate = (operator, x, y) => {
 const DISPLAY = document.querySelector(".display");
 const BUTTONS = [...document.querySelectorAll(".btn")];
 
+let display_value = 0;
+
 BUTTONS.forEach(button => {
     button.addEventListener('click', e => {
         if (e.target.classList.contains("value")) {
-            DISPLAY.textContent = e.target.textContent;
+            if (DISPLAY.textContent === '0') DISPLAY.textContent = '';
+            let target_value = e.target.textContent;
+            DISPLAY.textContent += target_value;
+            display_value = Number.parseInt(target_value);
         } else if (e.target.classList.contains("clear")) {
             DISPLAY.textContent = '0';
+            display_value = 0;
         }
+
+        console.log(display_value);
     });
 });
