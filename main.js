@@ -33,10 +33,10 @@ const operate = (operator, x, y) => {
         case '-':
             result = subtract(x,y);
             break;
-        case '*':
+        case '×':
             result = multiply(x,y);
             break;
-        case '/':
+        case '÷':
             if (y === 0) return 'Undefined';
             result = divide(x,y);
             break;
