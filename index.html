@@ -5,14 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Odin Calculator 2025</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Martian+Mono:wght@100..800&display=swap" rel="stylesheet">
     <script src="main.js" defer></script>
 </head>
 <body>
     <div class="calculator">
+        <div class="display">This is a display</div>
         <div class="row">
-            <button class="empty"></button>
-            <button class="empty"></button>
-            <button class="empty"></button>
+            <button class="empty" disabled></button>
+            <button class="empty" disabled></button>
+            <button class="empty" disabled></button>
             <button class="operator">/</button>
         </div>
         <div class="row">
@@ -34,7 +38,7 @@
             <button class="operator">+</button>
         </div>
         <div class="row">
-            <button class="empty"></button>
+            <button class="empty" disabled></button>
             <button class="val">0</button>
             <button class="empty" disabled></button>
             <button class="operator equal">=</button>
