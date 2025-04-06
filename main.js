@@ -55,14 +55,16 @@ BUTTONS.forEach(button => {
             MEMORY = [];
         } else if (e.target.classList.contains("operator")) {
             if (MEMORY.length < 2) {
-                MEMORY.push(DISPLAY.textContent * 1);
+                MEMORY.push(+(DISPLAY.textContent));
                 DISPLAY.textContent = '0'
                 MEMORY.unshift(target_value);
             }
         } else if (e.target.classList.contains("equal")) {
-            MEMORY.push(DISPLAY.textContent * 1);
-            DISPLAY.textContent = operate(MEMORY[0], MEMORY[1], MEMORY[2]);
-            MEMORY = [DISPLAY.textContent * 1];
+            if (MEMORY.length == 2) {
+                MEMORY.push(DISPLAY.textContent * 1);
+                DISPLAY.textContent = operate(MEMORY[0], MEMORY[1], MEMORY[2]).toFixed(3);
+                MEMORY = [];
+            }
         }
 
         console.log(MEMORY);
