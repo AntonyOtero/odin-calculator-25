@@ -45,24 +45,25 @@ body {
     border-radius: 50%;
     font-size: 20px;
     color: inherit; 
-    background-color: transparent;
+    background-color: #212121;
     cursor: pointer;
 }
 
+.btn:hover {
+    background-color: #4e4e4e;
+}
+
 .empty {
+    background-color: transparent;
     cursor: auto;
 }
 
+.empty:hover {
+    background-color: transparent;
+}
+
 .utility {
-    background-color: #4e4e4e;
-}
-
-.value {
-    background-color: #212121;
-}
-
-.value:hover {
-    background-color: #4e4e4e;
+    background-color: #434343;
 }
 
 .operator,

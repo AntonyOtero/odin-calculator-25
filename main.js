@@ -58,7 +58,16 @@ let MEMORY = [];
 BUTTONS.forEach(button => {
     button.addEventListener('click', e => {
         let target_value = e.target.textContent;
-        if (e.target.classList.contains("value")) {
+        
+        if (e.target.classList.contains("decimal")) {
+            if (!DISPLAY.textContent.match(/[.]/g)) {
+                if (MEMORY.length === 4) {
+                    DISPLAY.textContent = '0';
+                    MEMORY = [];
+                }
+                DISPLAY.textContent += target_value;  
+            }
+        } else if (e.target.classList.contains("value")) {
             if (DISPLAY.textContent === '0') {
                 DISPLAY.textContent = '';
             } else if (MEMORY.length === 4) {
