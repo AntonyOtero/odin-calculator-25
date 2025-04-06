@@ -52,12 +52,13 @@ const operate = (operator, x, y) => {
 // DISPLAY
 const DISPLAY = document.querySelector(".display");
 const BUTTONS = [...document.querySelectorAll(".btn")];
+const CLEAR_BTN = document.querySelector(".clear");
 
 let MEMORY = [];
 
 BUTTONS.forEach(button => {
     button.addEventListener('click', e => {
-        let target_value = e.target.textContent;
+        let targetValue = e.target.textContent;
         
         if (e.target.classList.contains("decimal")) {
             if (!DISPLAY.textContent.match(/[.]/g)) {
@@ -65,7 +66,7 @@ BUTTONS.forEach(button => {
                     DISPLAY.textContent = '0';
                     MEMORY = [];
                 }
-                DISPLAY.textContent += target_value;  
+                DISPLAY.textContent += targetValue;  
             }
         } else if (e.target.classList.contains("value")) {
             if (DISPLAY.textContent === '0') {
@@ -74,19 +75,23 @@ BUTTONS.forEach(button => {
                 DISPLAY.textContent = '';
                 MEMORY = [];
             }
-            DISPLAY.textContent += target_value;
+            DISPLAY.textContent += targetValue;
         } else if (e.target.classList.contains("clear")) {
-            DISPLAY.textContent = '0';
-            MEMORY = [];
+            if (DISPLAY.textContent.length > 1 && MEMORY.length !== 4) {
+                DISPLAY.textContent = DISPLAY.textContent.substring(0, DISPLAY.textContent.length - 1);
+            } else {
+                DISPLAY.textContent = '0';
+                MEMORY = [];
+            }
         } else if (e.target.classList.contains("operator")) {
             if (MEMORY.length < 2 && DISPLAY.textContent != 'Undefined') {
                 MEMORY.push(+(DISPLAY.textContent));
                 DISPLAY.textContent = '0'
-                MEMORY.unshift(target_value);
+                MEMORY.unshift(targetValue);
             } else if (MEMORY.length === 4 && DISPLAY.textContent != 'Undefined') {
                 MEMORY = [MEMORY[3]];
                 DISPLAY.textContent = '0'
-                MEMORY.unshift(target_value);
+                MEMORY.unshift(targetValue);
             }
         } else if (e.target.classList.contains("equal")) {
             if (MEMORY.length == 2) {
