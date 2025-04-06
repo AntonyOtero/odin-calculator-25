@@ -59,7 +59,12 @@ BUTTONS.forEach(button => {
     button.addEventListener('click', e => {
         let target_value = e.target.textContent;
         if (e.target.classList.contains("value")) {
-            if (DISPLAY.textContent === '0' || DISPLAY.textContent === 'Undefined') DISPLAY.textContent = '';
+            if (DISPLAY.textContent === '0') {
+                DISPLAY.textContent = '';
+            } else if (MEMORY.length === 4) {
+                DISPLAY.textContent = '';
+                MEMORY = [];
+            }
             DISPLAY.textContent += target_value;
         } else if (e.target.classList.contains("clear")) {
             DISPLAY.textContent = '0';
@@ -69,12 +74,20 @@ BUTTONS.forEach(button => {
                 MEMORY.push(+(DISPLAY.textContent));
                 DISPLAY.textContent = '0'
                 MEMORY.unshift(target_value);
+            } else if (MEMORY.length === 4 && DISPLAY.textContent != 'Undefined') {
+                MEMORY = [MEMORY[3]];
+                DISPLAY.textContent = '0'
+                MEMORY.unshift(target_value);
             }
         } else if (e.target.classList.contains("equal")) {
             if (MEMORY.length == 2) {
                 MEMORY.push(DISPLAY.textContent * 1);
                 DISPLAY.textContent = operate(MEMORY[0], MEMORY[1], MEMORY[2]);
-                MEMORY = [];
+                if (DISPLAY.textContent === "Undefined") {
+                    MEMORY.push(DISPLAY.textContent);
+                } else {
+                    MEMORY.push(+(DISPLAY.textContent));
+                }
             }
         }
 
