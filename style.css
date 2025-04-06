@@ -13,7 +13,8 @@ body {
     align-items: center;
     color: #fff;
     background-color: #000;
-    font-family: "Martian Mono", monospace;
+    font-family: "Victor Mono", monospace;
+    font-size: 28px;
 }
 
 button {
@@ -31,7 +32,7 @@ button {
     display: flex;
     flex-wrap: wrap;
     gap: 5px;
-    width: 340px;
+    width: 315px;
 }
 
 .row {
@@ -40,8 +41,20 @@ button {
     gap: 5px;
 }
 
+.display {
+    display: flex;
+    justify-content: end;
+    width: 100%;
+    padding: 0 10px;
+    margin-bottom: 20px;
+}
+
 .empty {
     cursor: auto;
+}
+
+.utility {
+    background-color: #4e4e4e;
 }
 
 .val {
