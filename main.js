@@ -37,3 +37,15 @@ const operate = (operator, x, y) => {
             return "Improper Input";
     }
 }
+
+// DISPLAY
+const DISPLAY = document.querySelector(".display");
+const BUTTONS = [...document.querySelectorAll(".value")];
+
+BUTTONS.forEach(button => {
+    button.addEventListener('click', e => {
+        if (e.target.classList.contains("value")) {
+            DISPLAY.textContent = e.target.textContent;
+        }
+    });
+});
