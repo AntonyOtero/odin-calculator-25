@@ -42,20 +42,29 @@ const operate = (operator, x, y) => {
 const DISPLAY = document.querySelector(".display");
 const BUTTONS = [...document.querySelectorAll(".btn")];
 
-let display_value = 0;
+let MEMORY = [];
 
 BUTTONS.forEach(button => {
     button.addEventListener('click', e => {
+        let target_value = e.target.textContent;
         if (e.target.classList.contains("value")) {
             if (DISPLAY.textContent === '0') DISPLAY.textContent = '';
-            let target_value = e.target.textContent;
             DISPLAY.textContent += target_value;
-            display_value = Number.parseInt(target_value);
         } else if (e.target.classList.contains("clear")) {
             DISPLAY.textContent = '0';
-            display_value = 0;
+            MEMORY = [];
+        } else if (e.target.classList.contains("operator")) {
+            if (MEMORY.length < 2) {
+                MEMORY.push(DISPLAY.textContent * 1);
+                DISPLAY.textContent = '0'
+                MEMORY.unshift(target_value);
+            }
+        } else if (e.target.classList.contains("equal")) {
+            MEMORY.push(DISPLAY.textContent * 1);
+            DISPLAY.textContent = operate(MEMORY[0], MEMORY[1], MEMORY[2]);
+            MEMORY = [DISPLAY.textContent * 1];
         }
 
-        console.log(display_value);
+        console.log(MEMORY);
     });
 });
