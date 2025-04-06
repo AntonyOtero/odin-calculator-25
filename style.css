@@ -38,12 +38,24 @@ button {
     gap: 5px;
 }
 
+.empty {
+    cursor: auto;
+}
+
 .val {
     background-color: #212121;
 }
 
+.val:hover {
+    background-color: #4e4e4e;
+}
+
 .operator {
     background-color: #fabf2b;
+}
+
+.operator:hover {
+    background-color: #fed366;
 }
 
 
