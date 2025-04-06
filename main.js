@@ -40,12 +40,14 @@ const operate = (operator, x, y) => {
 
 // DISPLAY
 const DISPLAY = document.querySelector(".display");
-const BUTTONS = [...document.querySelectorAll(".value")];
+const BUTTONS = [...document.querySelectorAll(".btn")];
 
 BUTTONS.forEach(button => {
     button.addEventListener('click', e => {
         if (e.target.classList.contains("value")) {
             DISPLAY.textContent = e.target.textContent;
+        } else if (e.target.classList.contains("clear")) {
+            DISPLAY.textContent = '0';
         }
     });
 });
