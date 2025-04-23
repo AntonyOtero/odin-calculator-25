@@ -60,6 +60,8 @@ BUTTONS.forEach(button => {
                 calculator.memory.push(+(DISPLAY.textContent));
                 calculator.memory.unshift(targetValue); 
                 DISPLAY.textContent = '0'
+            } else if (calculator.memory.length === 2 && DISPLAY.textContent != 'Undefined') {
+                calculator.memory[0] = targetValue;
             } else if (calculator.memory.length === 4 && DISPLAY.textContent != 'Undefined') {
                 calculator.memory = [calculator.memory[3]];
                 DISPLAY.textContent = '0'
